@@ -1,0 +1,66 @@
+[DOM]
+Document Object Model (DOM) - HTML parsed by the web browser into a tree-like 
+    representation of the webpage content; a tree of nodes and HTML element relationships 
+
+    *NOTE; if DOM manipulation JS is handled at the top of the HTML file then it will fail
+        because the HTML has not been parsed yet. Either link the JS at the bottom of the
+        HTML file or give the JS script tag the defer keyword*
+
+
+    DOM nodes are objects with many properties and methods attached for JS manipulation; 
+        targeted using relationship properties (parent, child, sibling) and CSS selectors
+    
+    Selectors
+        element.querySelector(selector) - returns reference to first matching
+        element.querySelectorAll(selectors) - returns "nodelist" containing all matching
+        *NOTE; nodelist looks like an array but is not, it can be converted into one 
+            using Array.from()  ...spread operator*
+        Ex. Variety of selectors for div class "display" inside div id "container"
+            div.display
+            .display
+            #container > .display
+            div#container > div.display
+            container.firstElementChild
+
+    Create element with optional "options" parameters. Will not enter into DOM yet as it
+        may still need styling, classes, text, etc. Save element to memory
+        Ex. document.createElement(tagName, [options])      //pseudo
+            const div = document.createElement('div');      //code
+
+    Append element
+        parentNode.appendChild(childNode) - appends as last child of parent
+        parentNode.insertBefore(newNode, referenceNode) - inserts newNode into parent 
+            before referenceNode
+
+    Remove element
+        parentNode.removeChild(child) - removes child from DOM, returns child reference
+
+    Styling element (referenced div example)
+        *NOTE; kebab cased CSS (background-color) will not work, use camelCase, bracket
+            notation, or .cssText assignment string*
+        div.style.color = 'blue';                                      
+        div.style.cssText = 'color: blue; background: white;';
+        div.setAttribute('style', 'color: blue; background: white;');
+
+    Edit attributes (referenced div example)
+        div.setAttribute('id', 'theDiv');                              
+        div.getAttribute('id');                                        
+        div.removeAttribute('id');   
+
+    Manage classes
+        div.classList.add('new');
+        div.classList.remove('new');                                   
+        div.classList.toggle('active');.
+
+    Add text content
+        div.textContent = 'Hello World!'                               
+
+    Add HTML content
+        div.innerHTML = '<span>Hello World!</span>';     
+
+
+[EVENTS]              
+Events - dynamic effects that listen and react to actions on a webpage
+    Method 1: specify function attributes directly on the HTML elements
+    Method 2: set properties of form on DOM nodes in JS (onclick, onmousedown, etc)
+    Method 3: attach event listeners to the DOM nodes in JS (preferred method)
