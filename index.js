@@ -48,3 +48,11 @@
         console.log(e)                              //Pass parameter to access more information
         //can set style within;     e.target.style.background = 'blue'
     })
+
+    //SelectorAll and .forEach method 
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        alert(button.id);
+        });
+    });
